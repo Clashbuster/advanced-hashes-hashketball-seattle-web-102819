@@ -236,7 +236,34 @@ end
 
 p player_with_longest_name
 
+def long_name_steals_a_ton? 
+  nam = []
+  stel = []
 
+  game_hash.each do |team, team_info|
+    team_info[:players].each do |player|
+      nam << player[:player_name]
+    end 
+  end
+
+  game_hash.each do |team, team_info|
+    team_info[:players].each do |player|
+      stel << player[:steals]
+    end 
+  end
+
+
+  longest_name = nam.max_by { |n| n.length }
+
+
+  if stel.find_index(stel.max) == (nam.find_index(longest_name))
+    return true 
+  else 
+    return false 
+  end 
+end
+
+p long_name_steals_a_ton?
 
 
 
