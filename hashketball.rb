@@ -193,4 +193,37 @@ end
 
 p most_points_scored
 
+def winning_team
+  awa = []
+  hom = []
+  
+  game_hash.each do |team, team_info|
+    if team == :away
+    team_info[:players].each do |player|
+      awa << player[:points]
+    end 
+  end
+end
+  
+  game_hash.each do |team, team_info| 
+    if team == :home
+        team_info[:players].each do |player|
+          hom << player[:points]
+        end 
+    end
+  end
+    
+if awa.sum < hom.sum
+  return game_hash[:home][:team_name]
+else if (awa.sum) > (hom.sum)
+  return game_hash[:away][:team_name]
+    end
+  end
+end 
+
+p winning_team
+
+
+
+
 
