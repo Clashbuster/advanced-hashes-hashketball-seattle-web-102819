@@ -223,6 +223,18 @@ end
 
 p winning_team
 
+def player_with_longest_name
+  nam = []
+  game_hash.each do |team, team_info|
+    team_info[:players].each do |player|
+      nam << player[:player_name]
+    end 
+  end 
+  
+return nam.max_by { |n| n.length }
+end
+
+p player_with_longest_name
 
 
 
